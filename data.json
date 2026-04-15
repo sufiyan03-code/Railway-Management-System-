@@ -1,0 +1,104 @@
+{
+    "trains": {
+        "345678": {
+            "name": "sdifui",
+            "source": "mysore ",
+            "destination": "bangalore ",
+            "total_seats": 4,
+            "available_seats": 3,
+            "lat": 32.409856178751475,
+            "lng": 75.70828117047269,
+            "price": 850
+        },
+        "4938579234": {
+            "name": "shivagi ",
+            "source": "mysore",
+            "destination": "bangalore ",
+            "total_seats": 299,
+            "available_seats": 299,
+            "lat": 23.595153709122982,
+            "lng": 80.34866440233696,
+            "price": 850
+        },
+        "1001": {
+            "name": "Rajdhani Express",
+            "source": "New Delhi",
+            "destination": "Mumbai",
+            "total_seats": 500,
+            "available_seats": 499,
+            "lat": 27.938158854528215,
+            "lng": 81.52810742223505,
+            "price": 850
+        },
+        "1002": {
+            "name": "Shatabdi Express",
+            "source": "Chennai",
+            "destination": "Bangalore",
+            "total_seats": 300,
+            "available_seats": 300,
+            "lat": 26.449365960816824,
+            "lng": 76.7132641041662,
+            "price": 850
+        },
+        "1003": {
+            "name": "Vande Bharat",
+            "source": "Varanasi",
+            "destination": "New Delhi",
+            "total_seats": 400,
+            "available_seats": 400,
+            "lat": 22.437753973572768,
+            "lng": 71.4487292026607,
+            "price": 850
+        },
+        "9591778819": {
+            "name": "sufiyan",
+            "source": "mysore",
+            "destination": "croog",
+            "total_seats": 400,
+            "available_seats": 400,
+            "price": 500.0,
+            "lat": 30.5721853930083,
+            "lng": 76.21232185123756
+        },
+        "5446461": {
+            "name": "hunsur ",
+            "source": "mysore",
+            "destination": "bellur",
+            "total_seats": 200,
+            "available_seats": 200,
+            "price": 500.0,
+            "lat": 24.50688027097151,
+            "lng": 76.66924008518424
+        }
+    },
+    "tickets": {
+        "PNRFF39E3": {
+            "passenger_name": "sufi",
+            "age": 24,
+            "train_id": "345678",
+            "seat_number": 1,
+            "status": "CONFIRMED"
+        },
+        "PNR09A413": {
+            "passenger_name": "iviuii",
+            "age": 556,
+            "train_id": "1001",
+            "seat_number": 1,
+            "status": "CONFIRMED"
+        }
+    },
+    "users": {
+        "sufiyan": {
+            "password": "sufi03",
+            "role": "user"
+        },
+        "admin": {
+            "password": "admin",
+            "role": "admin"
+        },
+        "sufi": {
+            "password": "sufiyan02",
+            "role": "user"
+        }
+    }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Railway Admin Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-bg">
+    <nav class="glass-nav admin-nav">
+        <div class="logo">🛠 RailAdmin</div>
+        <div class="nav-links">
+            <a href="/">User Portal</a>
+            <a href="#" class="active">Admin Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <main class="dashboard">
+        <header class="dashboard-header">
+            <h1>Administrative Control</h1>
+            <p>Manage fleet and ticket cancellations.</p>
+        </header>
+
+        <section class="grid-container admin-grid">
+            <!-- Add Train -->
+            <div class="card glass-card">
+                <h2>Deploy New Train</h2>
+                <form id="add-train-form">
+                    <input type="text" id="add-id" placeholder="Train ID (e.g. 102)" required>
+                    <input type="text" id="add-name" placeholder="Train Name" required>
+                    <input type="text" id="add-source" placeholder="Source Station" required>
+                    <input type="text" id="add-dest" placeholder="Destination Station" required>
+                    <input type="number" id="add-seats" placeholder="Total Capacity" required>
+                    <input type="number" id="add-price" placeholder="Ticket Price (₹)" required>
+                    <button type="submit" class="btn-primary admin-btn">Dispatch Train</button>
+                </form>
+                <div id="add-result" class="result-msg"></div>
+            </div>
+
+            <!-- Ticket Cancellation -->
+            <div class="card glass-card">
+                <h2>Revoke Ticket</h2>
+                <form id="cancel-ticket-form">
+                    <input type="text" id="cancel-pnr" placeholder="Enter PNR ID" required>
+                    <button type="submit" class="btn-danger admin-btn">Cancel Ticket</button>
+                </form>
+                <div id="cancel-result" class="result-msg"></div>
+            </div>
+
+            <!-- Active Tickets -->
+            <div class="card glass-card full-width" style="grid-column: 1 / -1;">
+                <h2>Active Database Summary</h2>
+                <button id="refresh-db" class="btn-secondary">Refresh Data</button>
+                <div class="table-container">
+                    <table id="tickets-table">
+                        <thead>
+                            <tr>
+                                <th>PNR</th>
+                                <th>Passenger</th>
+                                <th>Train ID</th>
+                                <th>Seat #</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='admin.js') }}"></script>
+</body>
+</html>

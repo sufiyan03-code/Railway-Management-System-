@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - RailConnect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .auth-container { display: flex; justify-content: center; align-items: center; min-height: 100vh; flex-direction: column; }
+        .auth-card { width: 100%; max-width: 400px; text-align: center; }
+        .auth-card input { width: 100%; margin-bottom: 1rem; }
+        .auth-card .logo { font-size: 2rem; margin-bottom: 2rem; }
+        .auth-card p { margin-top: 1rem; color: var(--text-muted); }
+        .auth-card a { color: var(--primary); text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="card glass-card auth-card">
+            <div class="logo">🚄 RailConnect</div>
+            <h2>Secure Login</h2>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit" class="btn-primary">Sign In</button>
+            </form>
+            <div id="login-result" class="result-msg"></div>
+            <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const res = await fetch('/login', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    username: document.getElementById('username').value,
+                    password: document.getElementById('password').value
+                })
+            });
+            const data = await res.json();
+            if(data.success) {
+                window.location.href = data.role === 'admin' ? '/admin' : '/';
+            } else {
+                document.getElementById('login-result').textContent = data.message;
+                document.getElementById('login-result').className = 'result-msg error';
+            }
+        });
+    </script>
+</body>
+</html>

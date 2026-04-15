@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Railway Dashboard</title>
+    <!-- Leaflet CSS for Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="glass-nav">
+        <div class="logo">🚄 RailConnect</div>
+        <div class="nav-links">
+            <a href="#" class="active">Dashboard</a>
+            {% if role == 'admin' %}
+            <a href="/admin">Admin Portal</a>
+            {% endif %}
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <main class="dashboard">
+        <header class="dashboard-header">
+            <h1>Welcome, Traveler</h1>
+            <p>Book tickets automatically or track your trains in real-time.</p>
+        </header>
+
+        <section class="grid-container">
+            <!-- Train List & Booking UI -->
+            <div class="card glass-card">
+                <h2>Available Trains</h2>
+                <div class="train-list" id="train-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="card glass-card">
+                <h2>Quick Book</h2>
+                <form id="book-form">
+                    <select id="train-select" required>
+                        <option value="">Select a Train...</option>
+                    </select>
+                    <input type="text" id="passenger-name" placeholder="Passenger Name" required>
+                    <input type="number" id="passenger-age" placeholder="Age" required>
+                    <button type="submit" class="btn-primary">Automate Booking</button>
+                </form>
+                <div id="booking-result" class="result-msg"></div>
+            </div>
+
+            <!-- Live Location Map -->
+            <div class="card glass-card map-card">
+                <h2>Live Train Tracking</h2>
+                <div id="map"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
